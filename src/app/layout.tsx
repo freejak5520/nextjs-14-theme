@@ -15,8 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ko" data-theme="dark" className="w-dvw h-dvh bg-neutral-200 dark:bg-neutral-800" suppressHydrationWarning>
+      <body className={inter.className}>
+        <script dangerouslySetInnerHTML={{__html: `if (localStorage.getItem("theme") === null) {document.documentElement.setAttribute("data-theme", "light");} else {document.documentElement.setAttribute("data-theme",localStorage.getItem("theme"));}`}}></script>
+        {children}
+      </body>
     </html>
   );
 }
